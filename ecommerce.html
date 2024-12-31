@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Equipment Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Sports Equipment Portal</h1>
+    <nav>
+      <a href="#customer">Customer Portal</a>
+      <a href="#vendor">Vendor Portal</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Customer Portal -->
+    <section id="customer">
+      <h2>Shop Sports Equipment</h2>
+      <div id="product-list">
+        <div class="product-card">
+          <img src="Soccer ball.jpeg" alt="Product 1">
+          <h3>Sports bottle</h3>
+          <p>High-quality basketball for all surfaces.</p>
+          <button class="buy-button">Buy Now</button>
+        </div>
+        <div class="product-card">
+          <img src="Tennis racket.jpeg" alt="Product 2">
+          <h3>Tennis Racket</h3>
+          <p>Durable and lightweight tennis racket.</p>
+          <button class="buy-button">Buy Now</button>
+        </div>
+        <div class="product-card">
+          <img src="water bottle.jpeg" alt="Product 3">
+          <h3>Soccer Ball</h3>
+          <p>Official size soccer ball for all levels.</p>
+          <button class="buy-button">Buy Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vendor Portal -->
+    <section id="vendor">
+      <h2>Vendor Portal</h2>
+      <form id="vendor-form" class="interactive-form">
+        <h3>Register as a Vendor</h3>
+        <label for="vendor-name">Full Name:</label>
+        <input type="text" id="vendor-name" name="vendor-name" placeholder="Enter your name" required>
+        <label for="vendor-email">Email:</label>
+        <input type="email" id="vendor-email" name="vendor-email" placeholder="Enter your email" required>
+        <button type="submit">Register</button>
+      </form>
+
+      <form id="product-form" class="interactive-form">
+        <h3>Add a Product</h3>
+        <label for="product-name">Product Name:</label>
+        <input type="text" id="product-name" name="product-name" placeholder="Enter product name" required>
+        <label for="product-image">Product Image URL:</label>
+        <input type="url" id="product-image" name="product-image" placeholder="Enter image URL" required>
+        <button type="submit">Add Product</button>
+      </form>
+    </section>
+  </main>
+
+  
+
+  <script src="script.js">
+    // Handle Buy Button
+document.querySelectorAll('.buy-button').forEach(button => {
+  button.addEventListener('click', () => {
+    alert('Thank you for your purchase!');
+  });
+});
+
+// Vendor Registration
+document.getElementById('vendor-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const name = document.getElementById('vendor-name').value;
+  const email = document.getElementById('vendor-email').value;
+  alert(Vendor Registered Successfully!\nName: ${name}\nEmail: ${email});
+  this.reset();
+});
+
+// Adding a Product
+document.getElementById('product-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const productName = document.getElementById('product-name').value;
+  const productImage = document.getElementById('product-image').value;
+
+  const productList = document.getElementById('product-list');
+  const newProduct = document.createElement('div');
+  newProduct.classList.add('product-card');
+  newProduct.innerHTML = `
+    <img src="${productImage}" alt="${productName}">
+    <h3>${productName}</h3>
+    <p>Newly added product.</p>
+    <button class="buy-button">Buy Now</button>
+  `;
+
+  productList.appendChild(newProduct);
+  alert(Product "${productName}" added successfully!);
+  this.reset();
+});
+
+  </script>
+</body>
+</html>
